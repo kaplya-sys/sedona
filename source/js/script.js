@@ -1,14 +1,14 @@
-let navMain = document.querySelector('.navigation');
-let navToggle = document.querySelector('.navigation__toggle');
+const navMenu = document.querySelector('.nav-menu');
+const toggleButton = document.querySelector('.nav-menu__toggle-button');
 
-navMain.classList.remove('navigation--nojs');
+navMenu.classList.remove('nav-menu--nojs');
 
-navToggle.addEventListener('click', function () {
-  if (navMain.classList.contains('navigation--closed')) {
-    navMain.classList.remove('navigation--closed');
-    navMain.classList.add('navigation--opened');
+toggleButton.addEventListener('click', () => {
+  if (navMenu.classList.contains('nav-menu--closed')) {
+    navMenu.classList.remove('nav-menu--closed');
+    navMenu.classList.add('nav-menu--opened');
   } else {
-    navMain.classList.add('navigation--closed');
-    navMain.classList.remove('navigation--opened');
+    navMenu.classList.add('nav-menu--closed');
+    navMenu.classList.remove('nav-menu--opened');
   }
 });

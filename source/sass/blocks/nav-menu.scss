@@ -1,0 +1,130 @@
+@use "global/variables";
+
+.nav-menu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: variables.$tabletWidth) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &--opened .nav-menu__list {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: variables.$tabletWidth) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  &--closed .nav-menu__list {
+    display: none;
+  }
+
+  &--closed .nav-menu__toggle-button {
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: #81b3d2;
+      box-shadow: 0 9px 0 0 #81b3d2, 0 18px 0 0 #81b3d2;
+      content: "";
+    }
+  }
+
+  &--opened .nav-menu__toggle-button {
+    &::after,
+    &::before {
+      position: absolute;
+      top: 9px;
+      left: -3px;
+      width: 28px;
+      height: 4px;
+      background-color: #ffffff;
+      transform: rotate(45deg);
+      content: "";
+    }
+
+    &::after {
+      transform: rotate(45deg);
+    }
+
+    &::before {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.nav-menu__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  &--bottom-list {
+    position: relative;
+
+    @media (max-width: variables.$tabletWidth) {
+      &::after {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 7px;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
+        content: "";
+      }
+    }
+  }
+}
+
+.nav-menu__link {
+  display: flex;
+  justify-content: center;
+  padding: 17px 0 12px 0;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #81b3d2;
+  box-shadow: 00 1px 00 rgba(1, 1, 1, 0.2), inset 00 1px 00 rgba(255, 255, 255, 0.2);
+
+  @media (min-width: variables.$tabletWidth) {
+    width: 153px;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+    background-color: #ffffff;
+    box-shadow: none;
+  }
+
+  @media (min-width: variables.$desktopWidth) {
+    width: 240px;
+  }
+}
+
+.nav-menu__toggle-button {
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  width: 23px;
+  height: 22px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  z-index: 1;
+  cursor: pointer;
+
+  @media (min-width: variables.$tabletWidth) {
+    display: none;
+  }
+
+  @media (min-width: variables.$desktopWidth) {
+    display: none;
+  }
+}
